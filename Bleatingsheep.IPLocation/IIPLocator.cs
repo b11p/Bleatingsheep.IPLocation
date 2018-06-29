@@ -14,6 +14,6 @@ namespace Bleatingsheep.IPLocation
 
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
-        Task<(bool, IIPLocation)> GetLocationAsync(byte[] address)
+        Task<(bool, IIPLocation)> GetLocationAsync(byte[] address);
     }
 }

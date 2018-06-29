@@ -8,6 +8,8 @@ namespace Bleatingsheep.IPLocation
 {
     public abstract class IPLocator : IIPLocator
     {
+        public static IIPLocator Default { get; } = new ZxLocator(new IpipLocator());
+
         protected async Task<(bool, T)> GetJsonAsync<T>(string url)
         {
             using (var httpClient = new HttpClient())
