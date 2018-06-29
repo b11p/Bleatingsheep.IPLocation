@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>bleatingsheep</Authors>
+    <Version>0.1.0</Version>
+    <PackageProjectUrl>https://github.com/bltsheep/Bleatingsheep.IPLocation</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/bltsheep/Bleatingsheep.IPLocation/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>ip location ipip zx</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
