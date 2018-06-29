@@ -16,7 +16,14 @@ namespace Bleatingsheep.IPLocation
             {
                 try
                 {
-                    string sResult = await httpClient.GetStringAsync(url);
+                    HttpResponseMessage response = await httpClient.GetAsync(url);
+                    while ((int)response.StatusCode == 429)
+                    {
+                        await Task.Delay(110);
+                        response = await httpClient.GetAsync(url);
+                    }
+                    response = response.EnsureSuccessStatusCode();
+                    string sResult = await response.Content.ReadAsStringAsync();
                     T result = JsonConvert.DeserializeObject<T>(sResult);
                     return (true, result);
                 }
