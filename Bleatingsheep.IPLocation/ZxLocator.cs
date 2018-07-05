@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Bleatingsheep.IPLocation
 {
-    internal sealed class ZxLocator : IPv6Locator
+    public sealed class ZxLocator : IPv6Locator
     {
         private const string V6Format = "http://ip.zxinc.org/api.php?type=json&ip={0}";
 

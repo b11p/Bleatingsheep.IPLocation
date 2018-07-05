@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bleatingsheep.IPLocation
 {
-    internal abstract class IPv6Locator : IPLocator, IIPLocator
+    public abstract class IPv6Locator : IPLocator, IIPLocator
     {
         protected abstract IIPLocator IPv4FallbackLocator { get; }
 

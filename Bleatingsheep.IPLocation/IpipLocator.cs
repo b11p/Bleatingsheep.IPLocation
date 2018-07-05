@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Bleatingsheep.IPLocation
 {
-    internal sealed class IpipLocator : IPLocator
+    public sealed class IpipLocator : IPLocator
     {
         private const string V4Format = "https://freeapi.ipip.net/{0}";
 
