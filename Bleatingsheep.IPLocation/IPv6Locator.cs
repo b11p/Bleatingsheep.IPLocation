@@ -28,14 +28,14 @@ namespace Bleatingsheep.IPLocation
             {
                 return await IPv4FallbackLocator.GetLocationAsync(address.MapToIPv4());
             }
-            byte[] bytes = address.GetAddressBytes();
+            var bytes = address.GetAddressBytes();
             if (address.IsIPv6Teredo)
             {
-                return await this.IPv4FallbackLocator.GetLocationAsync(new IPAddress(bytes.Skip(12).Select(b => (byte)(255 - b)).ToArray()));
+                return await IPv4FallbackLocator.GetLocationAsync(new IPAddress(bytes.Skip(12).Select(b => (byte)(255 - b)).ToArray()));
             }
             if (bytes[0] == 0x20 && bytes[1] == 0x02)
             {
-                return await this.IPv4FallbackLocator.GetLocationAsync(new IPAddress(bytes.Skip(2).Take(4).ToArray()));
+                return await IPv4FallbackLocator.GetLocationAsync(new IPAddress(bytes.Skip(2).Take(4).ToArray()));
             }
             return await GetIPv6LocationAsync(address);
         }

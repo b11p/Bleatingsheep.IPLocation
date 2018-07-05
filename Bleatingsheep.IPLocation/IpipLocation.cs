@@ -9,19 +9,18 @@ namespace Bleatingsheep.IPLocation
         private readonly string _region;
         private readonly string _city;
         private readonly string _detail;
-        private readonly IReadOnlyList<string> _raw;
         private readonly string _rawString;
 
         internal IpipLocation(IEnumerable<string> response)
         {
-            _raw = response.ToArray();
-            Provider = response.Last();
-            _country = _raw[0];
-            _region = _raw[1];
-            _city = _raw[2];
-            _detail = _raw[3];
-            Location = RawString(_raw.Take(_raw.Count - 1));
-            _rawString = RawString(_raw);
+            IReadOnlyList<string> raw = response.ToArray();
+            Provider = raw.Last();
+            _country = raw[0];
+            _region = raw[1];
+            _city = raw[2];
+            _detail = raw[3];
+            Location = RawString(raw.Take(raw.Count - 1));
+            _rawString = RawString(raw);
         }
 
         private string RawString(IEnumerable<string> raw) => string.Join(" ", raw.Where(s => !string.IsNullOrEmpty(s)).Distinct());

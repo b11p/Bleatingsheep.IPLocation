@@ -16,7 +16,7 @@ namespace Bleatingsheep.IPLocation
             {
                 try
                 {
-                    HttpResponseMessage response = await httpClient.GetAsync(url);
+                    var response = await httpClient.GetAsync(url);
                     while ((int)response.StatusCode == 429)
                     {
                         await Task.Delay(110);
@@ -24,7 +24,7 @@ namespace Bleatingsheep.IPLocation
                     }
                     response = response.EnsureSuccessStatusCode();
                     string sResult = await response.Content.ReadAsStringAsync();
-                    T result = JsonConvert.DeserializeObject<T>(sResult);
+                    var result = JsonConvert.DeserializeObject<T>(sResult);
                     return (true, result);
                 }
                 catch (Exception)
@@ -39,10 +39,10 @@ namespace Bleatingsheep.IPLocation
 
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="FormatException"></exception>
-        public virtual async Task<(bool, IIPLocation)> GetLocationAsync(string address) => await GetLocationAsync(IPAddress.Parse(address));
+        public virtual async Task<(bool, IIPLocation)> GetLocationAsync(string address) => await GetLocationAsync(IPAddress.Parse(address ?? throw new ArgumentNullException(nameof(address))));
 
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
-        public virtual async Task<(bool, IIPLocation)> GetLocationAsync(byte[] address) => await GetLocationAsync(new IPAddress(address));
+        public virtual async Task<(bool, IIPLocation)> GetLocationAsync(byte[] address) => await GetLocationAsync(new IPAddress(address ?? throw new ArgumentNullException(nameof(address))));
     }
 }

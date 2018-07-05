@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bleatingsheep.IPLocation
+﻿namespace Bleatingsheep.IPLocation
 {
     internal abstract class IPLocation : IIPLocation
     {
