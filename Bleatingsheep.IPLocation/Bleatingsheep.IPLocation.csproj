@@ -1,13 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard1.3;net45;net47</TargetFrameworks>
     <Authors>bleatingsheep</Authors>
-    <Version>0.2.0-alpha</Version>
+    <Version>0.2.0</Version>
     <PackageProjectUrl>https://github.com/bltsheep/Bleatingsheep.IPLocation</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/bltsheep/Bleatingsheep.IPLocation/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>ip location ipip zx</PackageTags>
+    <Copyright>bleatingsheep</Copyright>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <DocumentationFile>C:\Users\yinmi\source\repos\Bleatingsheep.IPLocation\Bleatingsheep.IPLocation\Bleatingsheep.IPLocation.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 </Project>
