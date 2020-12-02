@@ -16,8 +16,9 @@ namespace Bleatingsheep.IPLocation
             {
                 try
                 {
+                    int retry = 3;
                     var response = await httpClient.GetAsync(url);
-                    while ((int)response.StatusCode == 429)
+                    while ((int)response.StatusCode == 429 && retry-- > 0)
                     {
                         await Task.Delay(110);
                         response = await httpClient.GetAsync(url);
