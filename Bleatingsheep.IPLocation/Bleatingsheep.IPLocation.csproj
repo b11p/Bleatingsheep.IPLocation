@@ -12,7 +12,7 @@
     <DocumentationFile>C:\Users\yinmi\source\repos\Bleatingsheep.IPLocation\Bleatingsheep.IPLocation\Bleatingsheep.IPLocation.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
